@@ -1,0 +1,28 @@
+{
+  "name": "chat-socketio-tringodb-",
+  "version": "1.0.0",
+  "description": "chat-socketio-tringodb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rgarciade/chat-socketio-tringodb-.git"
+  },
+  "keywords": [
+    "chat",
+    "socketio",
+    "tringodb"
+  ],
+  "author": "rgarciade",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rgarciade/chat-socketio-tringodb-/issues"
+  },
+  "homepage": "https://github.com/rgarciade/chat-socketio-tringodb-#readme",
+  "dependencies": {
+    "socket.io": "^2.0.3",
+    "tingodb": "^0.5.1"
+  }
+}
