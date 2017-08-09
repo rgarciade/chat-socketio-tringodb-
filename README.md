@@ -1,2 +1,2 @@
-chat-socketio-tringodb
+chat-socketio-tingodb
 
