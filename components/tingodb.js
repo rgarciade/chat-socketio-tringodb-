@@ -143,6 +143,7 @@ function insertNewChat(idChat,firstUser,secondUser){
               ]
         }).then(data => {
 
+          
           if(results.length === 0 && (firstUser != secondUser ) && data.length === 0){
 
                 var insert = {idChat:idChat,firstUser:firstUser,secondUser:secondUser}
