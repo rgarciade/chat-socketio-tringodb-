@@ -5,20 +5,23 @@ var _ = require('lodash');
 
 
   //console.log(_.random(1, 999999, 0)
- insertNewChat(_.random(1, 999999, 0),2,3)
+/*  insertNewChat(_.random(1, 999999, 0),2,3)
   .then(data => console.log('then::',data))
   .catch(data =>console.log('catch::',data))
-   
+    */
+
+
 //findChatList( ).then(data => console.log(data))
- /* var fisrtUser = 2
+var firstUser = 2
 var secondUser = 3
 
-findChatList( 
+ findChatList( 
    {$and: [
-          {"fisrtUser" : { $in: [fisrtUser, secondUser] } },
-          {'secondUser': { $in: [fisrtUser, secondUser] }}
+          {"firstUser" : { $in: [firstUser, secondUser] } },
+          {'secondUser': { $in: [firstUser, secondUser] }}
         ]
-  }).then(data => console.log(data))  */
+  }).then(data => console.log(data))  
+
 //CreateUser('current-user','gogo2')
 //findUsers().then(data => console.log(data))
 //CreateUser('admin','raul')
@@ -65,6 +68,7 @@ function findUsers(query){
  * @param {json objet} query 
  */
 function findChatList(query){
+  console.log(query)
   return new Promise((resolve,reject) => {
     var ChatList = db.collection("ChatList");
     ChatList.find(query).toArray(function(err, results) {
