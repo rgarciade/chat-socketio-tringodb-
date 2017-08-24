@@ -15,6 +15,7 @@ var _ = require('lodash');
 var firstUser = 2
 var secondUser = 3
 
+
  findChatList( 
    {$and: [
           {"firstUser" : { $in: [firstUser, secondUser] } },
