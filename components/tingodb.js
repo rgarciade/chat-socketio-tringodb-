@@ -1,9 +1,16 @@
 var Engine = require('tingodb')()
 var db = new Engine.Db('./database/', {});
 var _ = require('lodash');
+var fs = require('fs');
  
 
+/*chatts*/
+//readChat('ss2').then(data =>{console.log(data)}).catch(data =>{console.log(`error:${data}`)})
 
+
+
+
+/*users*/
   //console.log(_.random(1, 999999, 0)
 /*  insertNewChat(_.random(1, 999999, 0),2,3)
   .then(data => console.log('then::',data))
@@ -12,7 +19,7 @@ var _ = require('lodash');
 
 
 //findChatList( ).then(data => console.log(data))
-var firstUser = 2
+/* var firstUser = 2
 var secondUser = 3
 
 
@@ -21,7 +28,7 @@ var secondUser = 3
           {"firstUser" : { $in: [firstUser, secondUser] } },
           {'secondUser': { $in: [firstUser, secondUser] }}
         ]
-  }).then(data => console.log(data))  
+  }).then(data => console.log(data))   */
 
 //CreateUser('current-user','gogo2')
 //findUsers().then(data => console.log(data))
@@ -66,24 +73,6 @@ function findUsers(query){
 
 /**
  * 
- * @param {json objet} query 
- */
-function findChatList(query){
-  console.log(query)
-  return new Promise((resolve,reject) => {
-    var ChatList = db.collection("ChatList");
-    ChatList.find(query).toArray(function(err, results) {
-      if (err) reject(err) 
-      resolve(results)
-    });
-
-  })
-
-}
-
-
-/**
- * 
  * @param {string} roll 
  * @param {string} name 
  */
@@ -107,26 +96,83 @@ function CreateUser(roll,name){
   })
 }
 
-
 /**
  * 
  * @param {string} user 
  * @param {number} numberChat 
  */
 function insertNewChatInUsers(user,numberChat){
-   return new Promise((resolve,reject) => {
-      var users = db.collection("users");
-      users.update(
-        { _id: user },
-        { $push: { chats: numberChat } },
-        (err,results)=>{
-          if(err) reject(err)
-            resolve(results)
-        }
-      )
-   })
+  return new Promise((resolve,reject) => {
+     var users = db.collection("users");
+     users.update(
+       { _id: user },
+       { $push: { chats: numberChat } },
+       (err,results)=>{
+         if(err) reject(err)
+           resolve(results)
+       }
+     )
+  })
 }
-  
+ 
+
+//-------------------------------------------------------
+//createChat('ss2')
+function createChat(idchat){
+
+    var Chat = db.collection(`chats/${idchat}`);
+   Chat.insert({},(err,results) =>{
+    if(err) console.log(err)
+      console.log(results)
+  })
+ 
+}
+
+
+function readChat(idchat){
+  return new Promise((resolve, reject) => {
+
+    chats = db.collection(`chats/${idchat}`);
+    
+     chats.find().toArray(function(err, results) {
+      if (err) reject(err) 
+      resolve(results)
+    });
+  })
+ 
+}
+function insertInChat(firstUser,secondUser){
+
+}
+
+
+
+
+
+
+//-----------------------------------------------------
+
+
+
+
+/**
+ * 
+ * @param {json objet} query 
+ */
+/* function findChatList(query){
+  console.log(query)
+  return new Promise((resolve,reject) => {
+    var ChatList = db.collection("ChatList");
+    ChatList.find(query).toArray(function(err, results) {
+      if (err) reject(err) 
+      resolve(results)
+    });
+
+  })
+
+}
+
+ */
 
 
 /**
@@ -135,6 +181,7 @@ function insertNewChatInUsers(user,numberChat){
  * @param {string} firstUser 
  * @param {string} secondUser 
  */
+/* 
 function insertNewChat(idChat,firstUser,secondUser){
 
   return new Promise((resolve,reject) => {
@@ -176,14 +223,5 @@ function insertNewChat(idChat,firstUser,secondUser){
   })
 
 }
-
-
-function createChat(firstUser,secondUser){
-}
-function insertInChat(firstUser,secondUser){
-
-}
-function readMessengers(firstUser,secondUser){
-
-}
+ */
 
